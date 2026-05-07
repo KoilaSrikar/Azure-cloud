@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact SAARA Systems for enterprise cloud, data, and AI solutions. Schedule a consultation with our Azure and Databricks experts.">
+  <title>Contact SAARA Systems | Enterprise Cloud & AI Consulting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <img src="images/saara-logo-icon.jpg" alt="SAARA Systems logo">
+        <div>
+          <strong>SAARA Systems</strong>
+          <span>Architecting Intelligent Enterprises</span>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="services.html">Solutions</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+      <a class="btn btn-sm" href="contact.html">Book Consultation</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Get Started</span>
+        <h1>Transform Your Business with Cloud & AI</h1>
+        <p>Let's discuss how our Azure, Databricks, and AI solutions can accelerate your digital transformation journey.</p>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h2>Get in Touch</h2>
+            <p>Ready to accelerate your cloud transformation? Our team of Azure and Databricks experts is here to help.</p>
+            
+            <div class="contact-methods">
+              <div class="contact-method">
+                <div class="contact-icon">📧</div>
+                <div>
+                  <h3>Email</h3>
+                  <p>ashok@saarasystems.com</p>
+                </div>
+              </div>
+              
+              <div class="contact-method">
+                <div class="contact-icon">📍</div>
+                <div>
+                  <h3>Location</h3>
+                  <p>Hyderabad, Telangana</p>
+                  <p>India</p>
+                </div>
+              </div>
+              
+              <div class="contact-method">
+                <div class="contact-icon">🌐</div>
+                <div>
+                  <h3>Website</h3>
+                  <p>www.saarasystems.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form">
+            <div class="form-card">
+              <h2>Book a Consultation</h2>
+              <form id="contactForm">
+                <div class="form-group">
+                  <label for="name">Full Name *</label>
+                  <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="email">Email Address *</label>
+                  <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="company">Company</label>
+                  <input type="text" id="company" name="company">
+                </div>
+                
+                <div class="form-group">
+                  <label for="service">Service Interest *</label>
+                  <select id="service" name="service" required>
+                    <option value="">Select a service</option>
+                    <option value="azure-migration">Azure Migration</option>
+                    <option value="data-engineering">Data Engineering</option>
+                    <option value="databricks">Databricks Solutions</option>
+                    <option value="ai-solutions">AI & Machine Learning</option>
+                    <option value="cost-optimization">Cost Optimization</option>
+                    <option value="consulting">General Consulting</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="message">Project Details</label>
+                  <textarea id="message" name="message" rows="4" placeholder="Tell us about your project..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn">Send Message</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-card">
+          <h2>Need Immediate Assistance?</h2>
+          <p>Try our AI Assistant for instant answers about our services</p>
+          <a href="ai-assistant.html" class="btn btn-secondary">Chat with AI Assistant</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>
+        <h4>SAARA Systems</h4>
+        <p>Architecting Intelligent Enterprises</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <p>Azure Solutions</p>
+        <p>Data Engineering</p>
+        <p>AI & Automation</p>
+      </div>
+      <div>
+        <h4>Get In Touch</h4>
+        <p>ashok@saarasystems.com</p>
+        <p>Hyderabad, Telangana</p>
+        <p>www.saarasystems.com</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData);
+      
+      // Simple form validation
+      if (!data.name || !data.email || !data.service) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+
+      const submitBtn = this.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+
+      try {
+        // Send data to backend
+        const response = await fetch(`${window.API_BASE_URL}/api/contact`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+          // Show success message
+          const formCard = document.querySelector('.form-card');
+          formCard.innerHTML = `
+            <div class="success-message">
+              <h2>✅ Thank You!</h2>
+              <p>Your consultation request has been received. We'll get back to you within 24 hours.</p>
+              <p><strong>Email:</strong> ashok@saarasystems.com</p>
+              <p><strong>Phone:</strong> Available upon request</p>
+              <a href="index.html" class="btn">Back to Home</a>
+            </div>
+          `;
+        } else {
+          const errorData = await response.json();
+          alert('Error: ' + (errorData.error || 'Failed to send message.'));
+        }
+      } catch (error) {
+        console.error('Submission error:', error);
+        alert('Network error. Please make sure the backend server is running and try again.');
+      } finally {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+
+  <style>
+    .contact-section {
+      padding: 80px 0;
+      background: var(--bg);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .contact-info h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+
+    .contact-info p {
+      font-size: 1.125rem;
+      color: #d4ddef;
+      margin-bottom: 2rem;
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .contact-method {
+      display: flex;
+      align-items: start;
+      gap: 1rem;
+    }
+
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .contact-method h3 {
+      margin: 0 0 0.5rem 0;
+      color: var(--white);
+    }
+
+    .contact-method p {
+      margin: 0;
+      color: #d4ddef;
+    }
+
+    .form-card {
+      background: var(--panel);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .form-card h2 {
+      margin: 0 0 2rem 0;
+      color: var(--white);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #d4ddef;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      color: var(--white);
+      font-family: inherit;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .success-message {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .success-message h2 {
+      color: #10b981;
+      margin-bottom: 1rem;
+    }
+
+    .success-message p {
+      color: #d4ddef;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section {
+      padding: 80px 0;
+      background: var(--panel);
+    }
+
+    .cta-card {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      border-radius: 16px;
+      padding: 3rem;
+      text-align: center;
+      color: var(--white);
+    }
+
+    .cta-card h2 {
+      margin: 0 0 1rem 0;
+    }
+
+    .cta-card p {
+      margin: 0 0 2rem 0;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .contact-info h2 {
+        font-size: 2rem;
+      }
+      
+      .cta-card {
+        padding: 2rem;
+      }
+    }
+  </style>
+</body>
+</html>

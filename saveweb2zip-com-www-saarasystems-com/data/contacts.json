@@ -1,9 +1,0 @@
-[
-  {
-    "name": "Test User",
-    "email": "test@example.com",
-    "service": "azure-migration",
-    "message": "This is a test message",
-    "timestamp": "2026-05-07T07:29:41.723Z"
-  }
-]
